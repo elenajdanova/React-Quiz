@@ -6,6 +6,6 @@
   margin: 1em;
 }
 
-.hSpace{
-  margin-top: 5px;
+.buttons.hSpace{
+  margin-bottom: 5px !important;
 }

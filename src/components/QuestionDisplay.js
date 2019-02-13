@@ -1,5 +1,6 @@
 import React from 'react';
 import './QuestionDisplay.css';
+import AnswersDisplay from './AnswersDisplay';
 
 
 const shuffle = (arr) => {
@@ -17,24 +18,20 @@ const QuestionDisplay = (props) => {
       //console.log(shuffledQuestions);
       let num = 0;
         let question = shuffledQuestions[num].question;
-        // let answers = shuffledQuestions[num].incorrect_answers;
-        // answers.push( shuffledQuestions[num].correct_answer );
+        let answers = shuffledQuestions[num].incorrect_answers;
+        let correctAnswer = shuffledQuestions[num].correct_answer;
+        answers.push( correctAnswer );
+        answers = shuffle(answers);
         // console.log(answers);
 
         return(
           <div className="ui segment center aligned">
             <div className="content questionMargins"> {question} </div>
             <div className="extra content">
-               <div className="ui two buttons">
-                 <button className="ui basic green button">A</button>
-                 <button className="ui basic green button">B</button>
-               </div>
-               <div className="hSpace">
-                 <div className="ui two buttons">
-                   <button className="ui basic green button">C</button>
-                   <button className="ui basic green button">D</button>
-                 </div>
-               </div>
+              <AnswersDisplay
+                answerList = {answers}
+                correctAnswer = {correctAnswer}
+              />
             </div>
           </div>
         );
