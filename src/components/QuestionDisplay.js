@@ -2,29 +2,29 @@ import React from 'react';
 import './QuestionDisplay.css';
 
 const QuestionDisplay = (props) => {
+
   const renderedQuestion = () => {
     let shuffledQuestions = [];
     if (props.questionList.length !== 0) {
-      shuffledQuestions = shuffle(props.questionList);
+        shuffledQuestions = shuffle(props.questionList);
+        //console.log(shuffledQuestions);
+        return shuffledQuestions[0].question;
+    } else {
+      return "Loading...";
     }
-
-
   };
 
   const shuffle = (arr) => {
-    for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        if (i !== j) {
-          [arr[i], arr[j]] = [arr[j], arr[i]];
-        }
+    function compareRandom(a, b) {
+      return Math.random() - 0.5;
     }
+    arr.sort(compareRandom);
     return arr;
 }
 
     return(
-      renderedQuestion(),
       <div className="ui segment center aligned">
-        <div className="content questionMargins">  </div>
+        <div className="content questionMargins"> {renderedQuestion()} </div>
         <div className="extra content">
            <div className="ui two buttons">
              <button className="ui basic green button">A</button>
