@@ -2,8 +2,27 @@ import React from 'react';
 import './QuestionDisplay.css';
 
 const QuestionDisplay = (props) => {
+  const renderedQuestion = () => {
+    let shuffledQuestions = [];
+    if (props.questionList.length !== 0) {
+      shuffledQuestions = shuffle(props.questionList);
+    }
 
-    return (
+
+  };
+
+  const shuffle = (arr) => {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        if (i !== j) {
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+    }
+    return arr;
+}
+
+    return(
+      renderedQuestion(),
       <div className="ui segment center aligned">
         <div className="content questionMargins">  </div>
         <div className="extra content">
