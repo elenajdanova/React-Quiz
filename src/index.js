@@ -1,12 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import QuestionDisplay from './components/QuestionDisplay';
+import trivia from './apis/trivia';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class App extends React.Component {
+  state = { questionBase:[] };
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  componentDidMount(){
+    (async () => {
+      const response = await trivia.get();
+      this.setState({questionBase: response.data.results});
+      //console.log(response.data.results);
+    })();
+  }
+
+  render() {
+    return (
+      <div className="ui container questionDisplay">
+        <QuestionDisplay
+          questionList = {this.state.questionBase}
+        />
+      </div>
+    );
+  }
+};
+
+
+ReactDOM.render(
+  <App />,
+  document.querySelector('#root')
+)
