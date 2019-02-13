@@ -12,6 +12,8 @@ const shuffle = (arr) => {
 }
 
 const QuestionDisplay = (props) => {
+
+  const renderQuestion = () => {
   let shuffledQuestions = [];
   if (props.questionList.length !== 0) {
       shuffledQuestions = shuffle(props.questionList);
@@ -23,9 +25,8 @@ const QuestionDisplay = (props) => {
         answers.push( correctAnswer );
         answers = shuffle(answers);
         // console.log(answers);
-
-        return(
-          <div className="ui segment center aligned">
+        return (
+          <div>
             <div className="content questionMargins"> {question} </div>
             <div className="extra content">
               <AnswersDisplay
@@ -34,13 +35,19 @@ const QuestionDisplay = (props) => {
               />
             </div>
           </div>
+        )
+      }  else {
+        return <div>Loading...</div>;
+      }
+  }
+
+        return(
+          <div className="ui segment center aligned">
+            {renderQuestion()}
+          </div>
         );
 
-  } else {
-    return <div>Loading...</div>;
-  }
-};
-
+}
 
 
 export default QuestionDisplay;
