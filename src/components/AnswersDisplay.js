@@ -2,11 +2,11 @@ import React from 'react';
 
 
 const AnswersDisplay = (props) => {
-  const answerOptions = props.answerList.map( (option) => {
+  const answerList = props.answerList.map( (option) => {
     return (
       <button
-        onClick={onAnswer}
         value={option}
+        onClick={onAnswer}
         className="ui basic green button">{option}
       </button>
     )
@@ -14,14 +14,12 @@ const AnswersDisplay = (props) => {
 
   let flag = false;
   const renderAnswers = () => {
-    let list = answerOptions;
       if (flag === false) {
         flag = true;
-        return list.slice(0,2)
+        return answerList.slice(0,2)
       } else {
-        return list.slice(2,4)
+        return answerList.slice(2,4)
       }
-
   };
 
   const onAnswer = (e) =>{
@@ -31,7 +29,7 @@ const AnswersDisplay = (props) => {
     // } else {
     //   //call callback from the index component (false)
     // }
-    console.log(userAnswer + props.correctAnswer);
+    console.log(userAnswer);
   }
 
   return(
