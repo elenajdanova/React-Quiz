@@ -1,12 +1,12 @@
 import React from 'react';
 
-
 const AnswersDisplay = (props) => {
+
   const answerList = props.answerList.map( (option) => {
     return (
       <button
-        value={option}
         onClick={onAnswer}
+        value={option}
         className="ui basic green button">{option}
       </button>
     )
@@ -20,16 +20,16 @@ const AnswersDisplay = (props) => {
       } else {
         return answerList.slice(2,4)
       }
-  };
+  }
 
-  const onAnswer = (e) =>{
+  function onAnswer (e) {
     let userAnswer = e.target.value;
-    // if (userAnswer === props.correctAnswer) {
-    //   //call callback from the index component (true)
-    // } else {
-    //   //call callback from the index component (false)
-    // }
-    console.log(userAnswer);
+    if (userAnswer === props.correctAnswer) {
+    //call callback from the index component (true)
+    } else {
+    //call callback from the index component (false)
+    }
+    //console.log(userAnswer);
   }
 
   return(
@@ -38,9 +38,7 @@ const AnswersDisplay = (props) => {
       <div className="ui two buttons hSpace">{renderAnswers()}</div>
     </div>
   );
-
 };
-
 
 
 export default AnswersDisplay;
