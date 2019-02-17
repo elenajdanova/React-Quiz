@@ -6,14 +6,14 @@ const AppFeedback = (props) => {
     if (props.userChoise === null) {
       return;
     }else if (props.userChoise === props.correctAnswer) {
-      return <h2>You are right!</h2>
+      return <h3>You are right!</h3>
     } else {
-      return <h2>Wrong answer!</h2>
+      return <h3>Wrong answer!</h3>
     }
   };
 
   return (
-    <div className="center aligned">{answerDisplay()}</div>
+    <div className="ui center aligned header">{answerDisplay()}</div>
   );
 };
 

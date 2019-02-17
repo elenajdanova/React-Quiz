@@ -43,8 +43,10 @@ const QuestionDisplay = (props) => {
   }
 
         return(
-          <div className="ui segment center aligned">
-            {renderQuestion()}
+          <div className= "active dimmer">
+            <div className="ui segment center aligned">
+              {renderQuestion()}
+            </div>
           </div>
         );
 
