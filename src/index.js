@@ -6,7 +6,7 @@ import AppFeedback from './components/AppFeedback';
 
 class App extends React.Component {
   state = {
-    questionBase:[],
+    questionBase: [],
     userChoise: null,
     correctAnswer : ""
    };
@@ -14,8 +14,8 @@ class App extends React.Component {
   componentDidMount(){
     (async () => {
       const response = await trivia.get();
-      this.setState({questionBase: response.data.results});
-      //console.log(response.data.results);
+      //console.log(response.data.results); // ????
+      this.setState({ questionBase: response.data.results });
     })();
   };
 
