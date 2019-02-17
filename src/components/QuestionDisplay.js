@@ -31,6 +31,7 @@ const QuestionDisplay = (props) => {
             <div className="extra content">
               <ButtonsDisplay
                 answerList = {answers}
+                correctAnswer = {correctAnswer}
                 onUserChoise = {props.onUserChoise}
               />
             </div>

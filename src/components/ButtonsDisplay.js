@@ -5,7 +5,7 @@ const ButtonsDisplay = (props) => {
   const answerList = props.answerList.map( (option) => {
     return (
       <button
-        onClick={ () => props.onUserChoise(option) } //call callback from the index component with the user answer
+        onClick={ () => props.onUserChoise(option, props.correctAnswer) } //call callback from the index component with the user answer
         value={option}
         className="ui basic green button">{option}
       </button>

@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import QuestionDisplay from './components/QuestionDisplay';
 import trivia from './apis/trivia';
+import AppFeedback from './components/AppFeedback';
 
 class App extends React.Component {
   state = {
     questionBase:[],
-    userChoise: null
+    userChoise: null,
+    correctAnswer : ""
    };
 
   componentDidMount(){
@@ -17,8 +19,11 @@ class App extends React.Component {
     })();
   };
 
-  onUserChoise = (option) => {
-    this.setState({ userChoise: option});
+  onUserChoise = (option, correctAnswer) => {
+    this.setState(
+      { userChoise: option,
+        correctAnswer: correctAnswer
+      });
   };
 
   render() {
@@ -27,6 +32,10 @@ class App extends React.Component {
         <QuestionDisplay
           questionList = {this.state.questionBase}
           onUserChoise = {this.onUserChoise}
+        />
+        <AppFeedback
+          userChoise = {this.state.userChoise}
+          correctAnswer = {this.state.correctAnswer}
         />
       </div>
     );
