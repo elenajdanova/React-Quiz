@@ -4,7 +4,10 @@ import QuestionDisplay from './components/QuestionDisplay';
 import trivia from './apis/trivia';
 
 class App extends React.Component {
-  state = { questionBase:[] };
+  state = {
+    questionBase:[],
+    userChoise: null
+   };
 
   componentDidMount(){
     (async () => {
@@ -12,13 +15,18 @@ class App extends React.Component {
       this.setState({questionBase: response.data.results});
       //console.log(response.data.results);
     })();
-  }
+  };
+
+  onUserChoise = (option) => {
+    this.setState({ userChoise: option});
+  };
 
   render() {
     return (
       <div className="ui container questionDisplay">
         <QuestionDisplay
           questionList = {this.state.questionBase}
+          onUserChoise = {this.onUserChoise}
         />
       </div>
     );

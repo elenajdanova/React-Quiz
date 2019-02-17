@@ -1,6 +1,6 @@
 import React from 'react';
 import './QuestionDisplay.css';
-import AnswersDisplay from './AnswersDisplay';
+import ButtonsDisplay from './ButtonsDisplay';
 
 
 const shuffle = (arr) => {
@@ -29,9 +29,9 @@ const QuestionDisplay = (props) => {
           <div>
             <div className="content questionMargins"> {question} </div>
             <div className="extra content">
-              <AnswersDisplay
+              <ButtonsDisplay
                 answerList = {answers}
-                correctAnswer = {correctAnswer}
+                onUserChoise = {props.onUserChoise}
               />
             </div>
           </div>
